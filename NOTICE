@@ -1,0 +1,31 @@
+Zwift Badge Planner
+Copyright (c) 2026 Allan Noer — MIT License (see LICENSE).
+
+TRADEMARKS AND THIRD-PARTY RIGHTS
+
+The MIT license covers only the original source code in this repository. It
+grants no rights to the "Zwift" name, logo, or other trademarks, or to any
+Zwift, Inc. software, service, API, data, or assets, all of which remain the
+property of Zwift, Inc.
+
+This project is unofficial and is not affiliated with, endorsed by, or sponsored
+by Zwift, Inc. "Zwift" is used only nominatively, to describe the third-party
+service this software interoperates with. Each user accesses their own account
+data with their own credentials, at their own risk, in accordance with Zwift's
+Terms of Service.
+
+GENERATED DATA (the data/ directory)
+
+  data/gamedict.json   — a parsed snapshot of Zwift's public GameDictionary.xml
+  data/portal-roads.json — a parsed snapshot of Zwift's public PortalRoadSchedule
+  data/route-achievements.json — a route→achievement mapping DERIVED from the above
+
+The gamedict and portal-roads snapshots are factual game data generated from
+Zwift's publicly served game assets; that underlying data is Zwift, Inc.'s and is
+included here only to let the tool run offline. It is regenerable at any time
+with `npm run refresh`. No ownership of Zwift's data is claimed.
+
+DEPENDENCIES
+
+This project builds on the `zwift-data` npm package (MIT) and the `zwift-api`
+library, and bundles Electron (MIT) in its packaged app.

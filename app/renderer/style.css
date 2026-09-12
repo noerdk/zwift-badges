@@ -1,0 +1,270 @@
+/* ============================================================
+   Zwift Plan — design system (Barlow / Zwift orange #FC6719)
+   Dark is the base; light overrides apply via [data-theme=light]
+   and, when following the OS, [data-theme=system] under a
+   light prefers-color-scheme.
+   ============================================================ */
+:root{
+  --page:#0B0E13; --bg:#0B0E13; --bg2:#0E1319; --chrome:#11161D; --surf:#12171E; --surf2:#151B23;
+  --ink:#F2F4F7; --ink2:#B9C1CB; --muted:#8A93A0; --faint:#57616E;
+  --acc:#FC6719; --acc-ink:#FC6719; --new:#58C322; --new-ink:#8FE04F; --kom:#E8332A;
+  --cy-ink:#2BB3E8; --q-ink:#2BB3E8;
+  --l0:rgba(255,255,255,.05); --l1:rgba(255,255,255,.06); --l2:rgba(255,255,255,.07);
+  --l3:rgba(255,255,255,.08); --l4:rgba(255,255,255,.09); --l5:rgba(255,255,255,.10);
+  --l6:rgba(255,255,255,.12); --l7:rgba(255,255,255,.13); --l8:rgba(255,255,255,.14);
+  --l9:rgba(255,255,255,.16); --l10:rgba(255,255,255,.18); --l11:rgba(255,255,255,.24);
+  --l12:rgba(255,255,255,.28); --l13:rgba(255,255,255,.32);
+  /* profile / svg tokens */
+  --elev-fill:rgba(252,103,25,.20); --elev-stroke:#FC6719;
+  --elev-blue-fill:rgba(178,206,228,.24); --elev-blue-stroke:#B2CEE4;
+  --grid:rgba(255,255,255,.10); --leader:rgba(255,255,255,.34); --baseline:rgba(255,255,255,.10);
+  --kom-band:rgba(232,51,42,.22); --kom-cap:rgba(60,110,190,.30);
+  --danger:#ff6b5e;
+}
+:root[data-theme="light"]{ color-scheme:light; }
+@media (prefers-color-scheme: light){ :root[data-theme="system"]{ color-scheme:light; } }
+/* Light token set, shared by explicit light and system-follows-light */
+:root[data-theme="light"],
+:root[data-theme="dark"]{ color-scheme:dark; }
+:root[data-theme="light"]{
+  --page:#c9cdd4; --bg:#F1F2F5; --bg2:#E7E9ED; --chrome:#FFFFFF; --surf:#FFFFFF; --surf2:#FFFFFF;
+  --ink:#10151C; --ink2:#3D4754; --muted:#5B6574; --faint:#8A93A0;
+  --acc-ink:#BF4808; --new-ink:#2E7D12; --q-ink:#0A6E96; --cy-ink:#0E7FAE;
+  --l0:rgba(0,0,0,.07); --l1:rgba(0,0,0,.07); --l2:rgba(0,0,0,.08); --l3:rgba(0,0,0,.09);
+  --l4:rgba(0,0,0,.10); --l5:rgba(0,0,0,.10); --l6:rgba(0,0,0,.12); --l7:rgba(0,0,0,.13);
+  --l8:rgba(0,0,0,.14); --l9:rgba(0,0,0,.16); --l10:rgba(0,0,0,.18); --l11:rgba(0,0,0,.26);
+  --l12:rgba(0,0,0,.30); --l13:rgba(0,0,0,.32);
+  --elev-fill:rgba(252,103,25,.26);
+  --elev-blue-fill:rgba(65,113,155,.22); --elev-blue-stroke:#41719B;
+  --grid:rgba(0,0,0,.16); --leader:rgba(0,0,0,.38); --baseline:rgba(0,0,0,.16);
+  --danger:#c62f22;
+}
+@media (prefers-color-scheme: light){
+  :root[data-theme="system"]{
+    --page:#c9cdd4; --bg:#F1F2F5; --bg2:#E7E9ED; --chrome:#FFFFFF; --surf:#FFFFFF; --surf2:#FFFFFF;
+    --ink:#10151C; --ink2:#3D4754; --muted:#5B6574; --faint:#8A93A0;
+    --acc-ink:#BF4808; --new-ink:#2E7D12; --q-ink:#0A6E96; --cy-ink:#0E7FAE;
+    --l0:rgba(0,0,0,.07); --l1:rgba(0,0,0,.07); --l2:rgba(0,0,0,.08); --l3:rgba(0,0,0,.09);
+    --l4:rgba(0,0,0,.10); --l5:rgba(0,0,0,.10); --l6:rgba(0,0,0,.12); --l7:rgba(0,0,0,.13);
+    --l8:rgba(0,0,0,.14); --l9:rgba(0,0,0,.16); --l10:rgba(0,0,0,.18); --l11:rgba(0,0,0,.26);
+    --l12:rgba(0,0,0,.30); --l13:rgba(0,0,0,.32);
+    --elev-fill:rgba(252,103,25,.26);
+    --elev-blue-fill:rgba(65,113,155,.22); --elev-blue-stroke:#41719B;
+    --grid:rgba(0,0,0,.16); --leader:rgba(0,0,0,.38); --baseline:rgba(0,0,0,.16);
+    --danger:#c62f22;
+  }
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;font:13px/1.45 Barlow,-apple-system,system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow:hidden}
+.mono{font:11.5px ui-monospace,Menlo,monospace}
+code{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink2)}
+
+/* chrome header */
+#chrome{-webkit-app-region:drag;display:flex;align-items:center;justify-content:space-between;
+  padding:11px 12px 11px 15px;background:var(--chrome);border-bottom:1px solid var(--l2)}
+#brand{display:flex;align-items:center;gap:9px}
+#logo{width:16px;height:16px;background:var(--acc);display:block;
+  clip-path:polygon(0% 100%,31% 30%,48% 66%,72% 0%,100% 100%)}
+#wordmark{font:700 13px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+#chromeright{-webkit-app-region:no-drag;display:flex;align-items:center;gap:8px}
+#themeseg{display:flex;background:var(--l0);border-radius:5px;padding:2px}
+#themeseg button{background:none;border:0;cursor:pointer;color:var(--muted);
+  font:700 9px 'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:3px}
+#themeseg button.active{background:var(--acc);color:#11161D}
+#chromeright>button{background:none;border:0;color:var(--faint);font-size:15px;cursor:pointer;padding:2px 6px;border-radius:5px;line-height:1}
+#chromeright>button:hover{background:var(--l3);color:var(--ink)}
+
+/* login */
+#login{padding:38px 32px}
+#loginlogo{width:44px;height:44px;background:var(--acc);margin-bottom:22px;
+  clip-path:polygon(0% 100%,31% 30%,48% 66%,72% 0%,100% 100%)}
+#login h1{font:700 32px/1.05 Barlow,sans-serif;margin:0 0 12px}
+.muted{color:var(--muted)}
+#login .muted{font-size:12px;line-height:1.55;margin:0 0 16px;max-width:420px}
+.fine{font-size:11px;margin-top:16px}
+form{display:flex;flex-direction:column;gap:9px;max-width:340px}
+input{font:14px Barlow,inherit;padding:10px 12px;border:1px solid var(--l6);border-radius:6px;background:var(--surf);color:var(--ink)}
+input::placeholder{color:var(--faint)}
+input:focus{outline:2px solid var(--acc);outline-offset:-1px}
+button[type=submit],.primary{background:var(--acc);color:#11161D;border:0;border-radius:6px;padding:11px;
+  font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+button[type=submit]:disabled{opacity:.5;cursor:default}
+.error{color:var(--danger);font-size:12px}
+
+/* app shell */
+#app{display:flex;flex-direction:column;height:calc(100% - 39px)}
+#who{padding:11px 15px 12px;background:var(--chrome);border-bottom:1px solid var(--l2);
+  display:flex;align-items:center;gap:12px}
+.who-main{flex:1;min-width:0}
+.who-line{display:flex;align-items:baseline;gap:8px}
+.who-name{font:700 15px/1 Barlow,sans-serif}
+.lvl{font:700 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;padding:3px 6px;border-radius:3px;background:var(--acc);color:#11161D}
+.who-stats{color:var(--muted);font-size:11px;margin-top:4px;font-variant-numeric:tabular-nums}
+.who-right{text-align:right;flex:0 0 auto}
+.who-count{font:700 15px/1 Barlow,sans-serif;font-variant-numeric:tabular-nums}
+.who-count span{color:var(--muted)}
+.who-rlabel{font:600 9px/1 'Barlow Condensed',sans-serif;letter-spacing:.12em;color:var(--muted);margin-top:4px;text-transform:uppercase}
+.who-bar{width:88px;height:3px;background:var(--l5);border-radius:2px;margin-top:6px;overflow:hidden}
+.who-bar>i{display:block;height:100%;background:var(--acc)}
+
+#tabs{display:flex;gap:0;padding:0 15px;background:var(--chrome);border-bottom:1px solid var(--l2);flex:0 0 auto}
+#tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);
+  font:600 12px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px 9px;cursor:pointer}
+#tabs button:hover{color:var(--ink2)}
+#tabs button.active{border-bottom-color:var(--acc);color:var(--ink);font-weight:700}
+
+#panels{flex:1;overflow-y:auto;overscroll-behavior:contain;background:var(--bg)}
+.panel{padding:16px 15px 22px}
+
+/* shared bits */
+.seclabel{font:700 11px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin:18px 0 9px}
+.seclabel:first-child{margin-top:2px}
+.note{color:var(--muted);font-size:11px;line-height:1.55;margin-top:12px}
+.note .star{color:var(--acc-ink)}
+.bar{height:5px;background:var(--l5);border-radius:3px;overflow:hidden;margin:11px 0 8px}
+.bar>i{display:block;height:100%;background:var(--acc)}
+.barmeta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.barmeta b{color:var(--ink)}
+
+/* pills / tags */
+.tag{display:inline-block;font:700 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;padding:5px 8px;border-radius:3px;text-transform:uppercase;white-space:nowrap}
+.tag.green{background:rgba(88,195,34,.16);color:var(--new-ink)}
+.tag.neutral{background:var(--l1);color:var(--ink2)}
+.tag.orange{background:var(--acc);color:#11161D}
+.tag.blue{background:rgba(43,179,232,.16);color:var(--cy-ink)}
+.pill{display:inline-block;font:700 9px/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;padding:4px 6px;border-radius:3px;text-transform:uppercase;white-space:nowrap}
+.pill.new{background:rgba(88,195,34,.16);color:var(--new-ink)}
+.pill.done{background:var(--l1);color:var(--muted)}
+.pill.event{background:var(--acc);color:#11161D}
+.pill.blue{background:rgba(43,179,232,.16);color:var(--cy-ink)}
+
+/* time-budget chips */
+.chips{display:flex;gap:6px;margin-bottom:14px}
+.chips.wrap{flex-wrap:wrap}
+.chip{flex:1;text-align:center;font:700 11px/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;
+  padding:7px 6px;border-radius:4px;background:var(--l0);color:var(--muted);cursor:pointer;border:0;white-space:nowrap}
+.chip.active{background:var(--acc);color:#11161D}
+.budgetlab{font:700 10px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;align-self:center;margin-right:4px;flex:0 0 auto}
+.budgetnote{font-size:11px;color:var(--muted);align-self:center;flex:0 0 auto;margin-left:4px;white-space:nowrap}
+
+/* hero "RIDE THIS" card */
+.hero{background:var(--surf2);border:1px solid var(--l3);border-left:3px solid var(--acc);
+  border-radius:6px;padding:15px 16px;margin-bottom:12px}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.hero-label{font:600 9px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;color:var(--acc-ink);text-transform:uppercase}
+.hero-name{font:700 27px/1.05 Barlow,sans-serif;margin-top:7px}
+.hero-stats{color:var(--muted);font-size:12px;margin-top:6px;font-variant-numeric:tabular-nums}
+.hero-xpwrap{text-align:right;flex:0 0 auto}
+.hero-xp{font:800 34px/1 Barlow,sans-serif;color:var(--acc-ink);font-variant-numeric:tabular-nums}
+.hero-xplab{font:600 9px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--muted);margin-top:5px;text-transform:uppercase}
+.hero-tags{display:flex;gap:7px;margin-top:13px;flex-wrap:wrap}
+.hero-foot{font:600 10px 'Barlow Condensed',sans-serif;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:8px;font-variant-numeric:tabular-nums}
+.hero-empty{color:var(--muted);font-size:12px;padding:6px 0}
+
+/* generic list rows (Today ranks, Badges-left, quest routes) */
+.lrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--l2)}
+.lrow:first-of-type{border-top:0}
+.lrank{font:700 13px Barlow,sans-serif;color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 auto;min-width:15px;text-align:center}
+.lmain{flex:1;min-width:0}
+.lname{font:600 13.5px Barlow,sans-serif;display:flex;align-items:center;gap:7px}
+.lname .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lsub{color:var(--muted);font-size:10.5px;margin-top:2px;font-variant-numeric:tabular-nums}
+.lright{text-align:right;flex:0 0 auto}
+.lxp{font:700 14px Barlow,sans-serif;font-variant-numeric:tabular-nums}
+.lxp.orange{color:var(--acc-ink)}
+.lxph{font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.08em;color:var(--acc-ink);text-transform:uppercase;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* routes table (grid, with expandable detail) */
+.rt-head,.rt-row{display:grid;grid-template-columns:1fr 46px 52px 58px 62px;gap:8px;align-items:center}
+.rt-head{padding:0 0 8px;border-bottom:1px solid var(--l3)}
+.rt-head span{font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.rt-head span.r,.rt-row .r{text-align:right}
+.rt-head span.orange{color:var(--acc-ink)}
+.rt-row{padding:9px 0;border-top:1px solid var(--l2);cursor:pointer}
+.rt-row:hover{background:var(--l0)}
+.rt-row.open{background:var(--surf);border-left:3px solid var(--acc);margin:0 -8px;padding:9px 8px 9px 5px;border-radius:4px 4px 0 0}
+.rt-name{font:600 13.5px Barlow,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rt-sub{color:var(--muted);font-size:10.5px;margin-top:2px;font-variant-numeric:tabular-nums}
+.rt-est{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.rt-xp{font:600 13px Barlow,sans-serif;font-variant-numeric:tabular-nums}
+.rt-xph{font:700 14px Barlow,sans-serif;color:var(--acc-ink);font-variant-numeric:tabular-nums}
+.rt-detail{background:var(--surf);border-left:3px solid var(--acc);margin:0 -8px 4px;padding:4px 14px 14px;border-radius:0 0 6px 6px}
+
+/* profile panel */
+/* (elevation chart removed — expanded row shows the segment breakdown) */
+.profile{padding:2px 0 0}
+.plegend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px;font-size:10.5px;color:var(--muted)}
+.plegend .lg{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
+.plegend i{display:inline-block;width:10px;height:10px;border-radius:2px}
+.plegend .i-climb{background:var(--acc)}
+.plegend .i-sprint{width:3px;height:12px;border-radius:0;background:var(--new)}
+.plegend .i-kom{background:var(--kom-band);border:1px solid var(--kom)}
+.plegend .lg-note{color:var(--muted);opacity:.8;font-style:italic}
+.pseglist{margin-top:9px;display:flex;flex-direction:column;gap:3px}
+.pseg{font-size:11px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.pseg .k{color:var(--muted)}
+
+/* stat row (Events / Quests headers) */
+.statrow{display:flex;border:1px solid var(--l3);border-radius:6px;overflow:hidden;background:var(--surf);margin-bottom:14px}
+.statrow .stat{flex:1;padding:12px 14px;border-right:1px solid var(--l2)}
+.statrow .stat:last-child{border-right:0}
+.stat b{display:block;font:800 22px Barlow,sans-serif;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{display:block;font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+.stat.green b{color:var(--new-ink)}
+.stat.orange b{color:var(--acc-ink)}
+.stat.blue b{color:var(--cy-ink)}
+
+/* big number (Badges) */
+.bignum{font:800 52px/1 Barlow,sans-serif;font-variant-numeric:tabular-nums}
+.bignum.orange{color:var(--acc-ink)}
+.bigsub{font:600 10px 'Barlow Condensed',sans-serif;letter-spacing:.14em;color:var(--acc-ink);text-transform:uppercase;margin-top:8px}
+
+/* ladders (Achievements) */
+.ladder{background:var(--surf);border:1px solid var(--l3);border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.ladder-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ladder-name{font:700 14px Barlow,sans-serif}
+.ladder-count{font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.rungs{display:flex;gap:4px;margin:10px 0 8px}
+.rung{flex:1;height:5px;border-radius:2px;background:var(--l4)}
+.rung.on{background:var(--acc)}
+.ladder-next{font-size:11.5px;color:var(--ink2)}
+.achv{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--l2)}
+.achv-name{font:600 12.5px Barlow,sans-serif;flex:0 0 150px}
+.achv-desc{font-size:11.5px;color:var(--muted);flex:1}
+
+/* events */
+.ev{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--l2)}
+.ev-time{font:700 30px/1 Barlow,sans-serif;color:var(--acc-ink);font-variant-numeric:tabular-nums;flex:0 0 auto;min-width:70px}
+.ev-main{flex:1;min-width:0}
+.ev-name{font:600 13.5px Barlow,sans-serif}
+.ev-sub{color:var(--muted);font-size:10.5px;margin-top:2px;font-variant-numeric:tabular-nums}
+.ev-xp{text-align:right;font:700 14px Barlow,sans-serif;font-variant-numeric:tabular-nums;flex:0 0 auto}
+.ev.past{opacity:.55}
+.ev.past .ev-time{color:var(--muted)}
+
+/* quests */
+.quest{background:var(--surf);border:1px solid var(--l3);border-radius:6px;padding:13px 14px;margin-bottom:10px}
+.quest-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.quest-name{font:700 15px Barlow,sans-serif}
+.quest-ends{font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.quest-detail{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.quest-detail b{color:var(--ink)}
+
+/* fieldset (re-anchor) */
+fieldset{border:1px solid var(--l3);border-radius:6px;padding:12px 13px;margin:14px 0 0;background:var(--surf)}
+legend{font:600 9px 'Barlow Condensed',sans-serif;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding:0 5px}
+select{font:13px Barlow,inherit;padding:8px 9px;border-radius:6px;border:1px solid var(--l6);background:var(--bg2);color:var(--ink);width:100%}
+.field{display:flex;gap:8px;margin-top:8px}
+.field input{flex:1;min-width:0}
+
+/* details / disclosure */
+details{margin-top:16px}
+summary{cursor:pointer;font:700 11px 'Barlow Condensed',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+summary:hover{color:var(--ink2)}
+
+/* loading */
+#loading{position:absolute;inset:39px 0 0;display:grid;place-items:center;color:var(--muted);font:12px Barlow,sans-serif;background:var(--bg)}
+#loading[hidden]{display:none}

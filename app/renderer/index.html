@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:;" />
+<title>Zwift Badge Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+
+<header id="chrome">
+  <span id="brand"><span id="logo" aria-hidden="true"></span><span id="wordmark">Zwift Plan</span></span>
+  <span id="chromeright">
+    <span id="themeseg" role="tablist" aria-label="Theme">
+      <button data-theme="system" title="Follow system">Sys</button>
+      <button data-theme="dark" title="Dark">Dark</button>
+      <button data-theme="light" title="Light">Light</button>
+    </span>
+    <button id="refresh" title="Refresh">&#8635;</button>
+    <button id="quit" title="Quit">&times;</button>
+  </span>
+</header>
+
+<section id="login" hidden>
+  <div id="loginlogo" aria-hidden="true"></div>
+  <h1>Sign in to Zwift</h1>
+  <p class="muted">Your password is used once to fetch a token and is never stored or logged. Only a refresh token is kept, at <code>~/.config/zwift-plan/token</code>.</p>
+  <form id="loginform">
+    <input id="user" type="email" placeholder="Zwift email" autocomplete="username" required />
+    <input id="pass" type="password" placeholder="Password" autocomplete="current-password" required />
+    <button type="submit" id="loginbtn">Sign in</button>
+  </form>
+  <p id="loginerr" class="error" hidden></p>
+  <p class="muted fine">Unofficial. Not affiliated with or endorsed by Zwift. Read-only — this app never changes anything on your account.</p>
+</section>
+
+<section id="app" hidden>
+  <div id="who"></div>
+  <nav id="tabs">
+    <button data-tab="today" class="active">Today</button>
+    <button data-tab="routes">Routes</button>
+    <button data-tab="badges">Badges</button>
+    <button data-tab="achievements">Achv</button>
+    <button data-tab="events">Events</button>
+    <button data-tab="challenge">Quests</button>
+  </nav>
+  <div id="panels">
+    <div class="panel" id="p-today"></div>
+    <div class="panel" id="p-routes" hidden></div>
+    <div class="panel" id="p-badges" hidden></div>
+    <div class="panel" id="p-achievements" hidden></div>
+    <div class="panel" id="p-events" hidden></div>
+    <div class="panel" id="p-challenge" hidden></div>
+  </div>
+</section>
+
+<div id="loading">Loading…</div>
+<script src="app.js"></script>

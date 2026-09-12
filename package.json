@@ -1,0 +1,92 @@
+{
+  "name": "zwift-plan",
+  "version": "0.4.3",
+  "description": "Unofficial local CLI that ranks Zwift routes by XP-per-hour using your real earned badges.",
+  "license": "MIT",
+  "author": "Allan Noer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noerdk/zwift-badges.git"
+  },
+  "homepage": "https://github.com/noerdk/zwift-badges#readme",
+  "bugs": {
+    "url": "https://github.com/noerdk/zwift-badges/issues"
+  },
+  "keywords": [
+    "zwift",
+    "cycling",
+    "routes",
+    "badges",
+    "xp",
+    "electron",
+    "menu-bar"
+  ],
+  "type": "module",
+  "bin": {
+    "zwift-plan": "./bin/zwift-plan.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "zwift-api": "^0.3.0",
+    "zwift-data": "^1.44.0"
+  },
+  "scripts": {
+    "test": "node --test",
+    "build:map": "EMIT=1 REPORT=1 node scripts/build-route-badge-map.js",
+    "app": "electron app/main.js",
+    "refresh": "node scripts/refresh-gamedict.js && EMIT=1 REPORT=1 node scripts/build-route-badge-map.js",
+    "dist": "electron-builder --mac",
+    "pack": "electron-builder --mac dir"
+  },
+  "devDependencies": {
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "allowScripts": {
+    "electron@44.3.0": true
+  },
+  "main": "app/main.js",
+  "build": {
+    "appId": "biz.noer.zwiftbadgeplanner",
+    "productName": "Zwift Badge Planner",
+    "copyright": "Copyright (c) 2026 Allan Noer",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "app/**/*",
+      "src/**/*",
+      "data/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "app/main.js"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64", "x64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["arm64", "x64"]
+        }
+      ],
+      "category": "public.app-category.healthcare-fitness",
+      "icon": "build/icon.png",
+      "identity": "Allan Noer (8PPN4AT6ED)",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    },
+    "dmg": {
+      "title": "Zwift Badge Planner"
+    }
+  }
+}

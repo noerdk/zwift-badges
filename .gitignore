@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.op.template
+*.log
+tmp/
+scratch/
+# never commit anything resembling a token store
+token
+token.json
+config.json
+dist/
+out/
+.DS_Store
